@@ -1,0 +1,57 @@
+{
+    "name": "artificial-reason",
+    "version": "1.5.0",
+    "authors": [
+        "adrigm <adrigm.admin@gmail.com>"
+    ],
+
+    "description": "",
+    "main": "index.html",
+    "moduleType": [
+        "node"
+    ],
+
+    "keywords": [
+        "Template",
+        "FrontEnd",
+        "Gulp",
+        "Modular"
+    ],
+
+    "license": "Copyright 2015",
+
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+
+    "dependencies": {
+        "animate-css": "3.5.2",
+        "bootstrap": "3.3.7",
+        "bootstrap-switch": "3.3.2",
+        "Buttons": "2.0.0",
+        "bxslider-4": "https://github.com/sekmenhuseyin/bxslider-4.git#master",
+        "circles": "https://github.com/lugolabs/circles/archive/master.zip",
+        "font-awesome": "4.7.0",
+        "holderjs": "2.9.4",
+        "html5shiv": "3.7.3",
+        "jquery": "3.1.1",
+        "jquery-cookie": "1.4.1",
+        "jquery.countdown": "2.2.0",
+        "jquery.counterup": "^2.0.5",
+        "lightbox": "2.9.0",
+        "mixitup": "#2.1.11",
+        "respond": "1.4.2",
+        "slidebars": "slidebars#^0.10.3",
+        "syntaxhighlighter": "http://alexgorbatchev.com/SyntaxHighlighter/download/download.php?sh_current",
+        "wowjs": "1.1.2",
+        "imagesloaded": "4.1.1",
+        "masonry": "4.1.1",
+        "matchHeight": "0.7.0",
+        "owl-carousel2": "*",
+        "jquery-mousewheel": "3.1.13"
+    }
+}
