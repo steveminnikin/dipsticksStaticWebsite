@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+  <url>
+    <loc>http://www.dipsticksengineering.co.uk/</loc>     
+  </url>
+  <url>
+    <loc>http://www.dipsticksengineering.co.uk/dipsticks.html</loc>
+  </url>
+   <url>
+    <loc>http://www.dipsticksengineering.co.uk/dip_tapes.html</loc>
+  </url>
+   <url>
+    <loc>http://www.dipsticksengineering.co.uk/strapping_tables.html</loc>
+  </url>
+  <url>
+    <loc>http://www.dipsticksengineering.co.uk/contact.html</loc>
+  </url>
+  <url>
+    <loc>http://www.dipsticksengineering.co.uk/About.html</loc>
+  </url>
+  <url>
+    <loc>http://www.dipsticksengineering.co.uk/FAQs.html</loc>
+  </url>
+  <url>
+    <loc>http://www.dipsticksengineering.co.uk/how_to_use_a_dipstick.html</loc>
+  </url>
+  <url>
+    <loc>http://www.dipsticksengineering.co.uk/dipstick_rubbing_guide.html</loc>
+  </url>
+</urlset>

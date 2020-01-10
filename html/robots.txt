@@ -1,0 +1,5 @@
+User-agent: *
+disallow: /src
+
+# The sitemap must be an absolute URL
+sitemap: http://www.dipsticksengineering.co.uk/Sitemap.txt
