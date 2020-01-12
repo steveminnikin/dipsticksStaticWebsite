@@ -45,8 +45,6 @@
 <link href="/css/style-blue.css" rel="stylesheet" title="default">
 <link href="/css/width-full.css" rel="stylesheet" title="default">
 
-
-
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
         <script src="/js/html5shiv.min.js"></script>
@@ -175,44 +173,50 @@
             <header class="main-header">
                 <div class="container">
                     <h1 class="page-title">Dipsticks</h1>
-
                     <ol class="breadcrumb pull-right">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/">Products</a></li>
-                        <li class="active">Dipsticks</li>
+                        <li>
+                            <span id="a" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemref="b"><a href="/" itemprop="url"><span itemprop="title">Home</span></a>
+                            </span>
+                        </li>
+                        <li><span id="b" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child" itemref="c"><a href="/" itemprop="url"><span itemprop="title">Products</span></a>
+                            </span>
+                        </li>
+                        <li class="active"><span id="c" itemscope itemtype="http://data-vocabulary.org/Breadcrumb" itemprop="child"><a href="dipsticks" itemprop="url"><span itemprop="title">Dipsticks</span></a>
+                            </span>
+                        </li>
                     </ol>
                 </div>
             </header>
 
             <div class="container">
-                <h2 class="section-title no-margin-top">Calibrated GRP rods that provide accurate and cost-effective volume readings</h2>
+                <h2 id="Dipsticks" class="section-title no-margin-top">Calibrated dip rods that provide accurate and cost-effective volume readings</h2>
                 <div class="row">
                     <div class="col-md-4 col-sm-6 hidden-xs">
                         <ul class="bxslider">
                             <li>
-                                <img src="assets/img/calibrated_dipstick.jpg" alt="Tank Measurement Stick" /></li>
+                                <img src="/img/calibrated_dipstick.jpg" alt="Tank Measurement Stick" /></li>
                             <li>
-                                <img src="assets/img/Example of our dipsticks.png" alt="Calibrated Dipsticks for Storage Tanks"></li>
+                                <img src="/img/Example of our dipsticks.png" alt="Calibrated Dipsticks for Storage Tanks"></li>
                             <li>
-                                <img src="assets/img/t_section_grp_dipstick.jpg" alt="T Section GRP Dipsticks" /></li>
+                                <img src="/img/t_section_grp_dipstick.jpg" alt="T Section GRP Dipsticks" /></li>
                         </ul>
 
                         <div id="bx-pager">
                             <a data-slide-index="0" href="#">
-                                <img src="assets/img/calibrated_dipstick_thumbnail.jpg" alt="Dipsticks for Home Oil Tank"></a>
+                                <img src="/img/calibrated_dipstick_thumbnail.jpg" alt="Dipsticks for Home Oil Tank"></a>
                             <a data-slide-index="1" href="#">
-                                <img src="assets/img/Example of our dipsticks_thumbnail.png" alt="Calibrated Dipsticks for Oil Tanks"></a>
+                                <img src="/img/Example of our dipsticks_thumbnail.png" alt="Calibrated Dipsticks for Oil Tanks"></a>
                             <a data-slide-index="2" href="#">
-                                <img src="assets/img/t_section_grp_dipstick_thumbnail.jpg" alt="Heating Oil Tank Dipstick"></a>
+                                <img src="/img/t_section_grp_dipstick_thumbnail.jpg" alt="Heating Oil Tank Dipstick"></a>
                         </div>
 
                         <h3>Storage Tank Applications</h3>
                         <p class="lead-sm text-center">Our dipsticks are ideally suited for the following tank types</p>
                         <div class="list-group">
-                            <a href="page_coming.html" class="list-group-item list-group-item-info">Rectangular Storage tanks</a>
-                            <a href="page_coming.html" class="list-group-item list-group-item-info">Horizontal Cylindrical (with or without dished ends)</a>
-                            <a href="page_coming.html" class="list-group-item list-group-item-info">Vertical Cylindrical Storage Tanks</a>
-                            <a href="dipsticks_for_heating_oil_tanks" class="list-group-item list-group-item-info">Home Heating Oil Tanks & Oil Drums</a>
+                            <a href="#" class="list-group-item list-group-item-info">Rectangular Storage tanks</a>
+                            <a href="#" class="list-group-item list-group-item-info">Horizontal Cylindrical (with or without dished ends)</a>
+                            <a href="#" class="list-group-item list-group-item-info">Vertical Cylindrical Storage Tanks</a>
+                            <a href="#" class="list-group-item list-group-item-info">Home Heating Oil Tanks & Oil Drums</a>
                         </div>
                         <p class="lead lead-small em-primary text-center">Don't see your tank on the list? Just contact us!</p>
                     </div>
@@ -234,17 +238,31 @@
                         </ul>
 
                     </div>
-                    <div class="col-md-3">
-                        <div class="e-price">$ <span>229</span>.00</div>
-                        <a href="#" class="btn btn-ar btn-block btn-success"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
-                        <h3 class="right-line">Related Products</h3>
-                        <div class="ec-box">
-                            <div class="ec-box-header"><a href="#">Bq Aquaris 5 16GB White</a></div>
-                            <a href="#"><img src="<%= assets %>img/demo/e_img03.jpg" alt=""></a>
-                            <div class="ec-box-footer">
-                                <span class="label label-primary">$ 249.99</span>
-                                <a href="#" class="btn btn-ar btn-success btn-sm pull-right"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                    <div class="col-md-3 col-xs-12">
+                        <div class="pricign-box pricign-box-pro animated fadeInUp animation-delay-9">
+                            <div class="pricing-box-header">
+                                <h2>Price</h2>
+
                             </div>
+                            <div class="pricing-box-price">
+                                <h3><small>from</small> £52 </h3>
+
+                            </div>
+                            <div class="pricing-box-content text-center">
+                                <p>Contact us for full details as each dipstick is calibrated to the dimensions of the storage tank and your specific needs</p>
+                                .
+                                <a href="contact.html" class="btn btn-ar btn-primary">Get a Quote</a>
+                                <p class="text-center small">ex VAT & delivery</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-12">
+
+                        <h3 class="right-line">Further Info</h3>
+                        <div class="ec-box">
+                            <div class="ec-box-header">Tank Measurement Guide<a href="Downloads/DipsticksTankMeasurementsForm.pdf" class="btn btn-ar btn-warning btn-sm pull-right"><i class="fa fa-info"></i>View</a></div>
+                            <div class="ec-box-header">Dipstick Rubbing Guide<a href="dipstick_rubbing_guide.aspx" class="btn btn-ar btn-warning btn-sm pull-right"><i class="fa fa-info"></i>View</a></div>
+
                         </div>
                     </div>
                 </div>
@@ -302,7 +320,7 @@
             </aside>
             <!-- footer-widgets -->
             <footer id="footer">
-                <p>Dipsticks Engineering Services Ltd | Registered Address: The Lodge, Wood Lane, Hinstock, Shropshire TF9 2TA | Tel: 07793748037 | Email: <a href="mailto:enquiries@dipsticksengineering.co.uk">enquiries@dipsticksengineering.co.uk</a></p>
+                <p>Dipsticks Engineering Services Ltd | Registered Address: The Lodge, Wood Lane, Hinstock, Shropshire TF9 2TA | Tel: 0333 567 1654 | Email: <a href="mailto:enquiries@dipsticksengineering.co.uk">enquiries@dipsticksengineering.co.uk</a></p>
                 <p>Registered in England and Wales. Companies House No. 10632644 | &copy; 2020 Dipsticks Engineering Services Ltd. All rights reserved.</p>
             </footer>
 
