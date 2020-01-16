@@ -10,7 +10,7 @@
     <loc>http://www.dipsticksengineering.co.uk/dip_tapes.html</loc>
   </url>
    <url>
-    <loc>http://www.dipsticksengineering.co.uk/strapping_tables.html</loc>
+    <loc>http://www.dipsticksengineering.co.uk/calibration_charts.html</loc>
   </url>
   <url>
     <loc>http://www.dipsticksengineering.co.uk/contact.html</loc>
