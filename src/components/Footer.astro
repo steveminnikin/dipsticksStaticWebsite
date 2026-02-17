@@ -1,0 +1,102 @@
+---
+const currentYear = new Date().getFullYear();
+
+const sitemapLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Dipsticks', href: '/products/dipsticks/' },
+  { label: 'Dip Tapes', href: '/products/dip-tapes/' },
+  { label: 'Calibration Charts', href: '/products/calibration-charts/' },
+  { label: 'About Us', href: '/about/' },
+  { label: 'FAQs', href: '/faqs/' },
+  { label: 'How to Use a Dipstick', href: '/guides/how-to-use-a-dipstick/' },
+  { label: 'Rubbing Guide', href: '/guides/dipstick-rubbing-guide/' },
+  { label: 'Contact Us', href: '/contact/' },
+];
+
+const downloads = [
+  { label: 'Tank Measurement Guide', href: '/downloads/DipsticksTankMeasurementsForm.pdf' },
+  { label: 'Dipstick Rubbing Guide', href: '/downloads/DipsticksRubbingGuide.pdf' },
+  { label: 'Dipstick Usage Guide', href: '/downloads/DipsticksUsageGuide.pdf' },
+];
+---
+
+<footer class="bg-primary-dark text-white">
+  <!-- Main footer -->
+  <div class="mx-auto max-w-7xl px-4 py-12 lg:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <!-- Company info -->
+      <div class="lg:col-span-1">
+        <a href="/" class="text-xl font-bold">
+          Dipsticks <span class="font-normal text-secondary">Engineering</span>
+        </a>
+        <p class="mt-3 text-sm text-neutral-300 leading-relaxed">
+          Precision tank measurement solutions since 1985. Dipsticks, dip tapes and calibration charts manufactured to your exact specifications.
+        </p>
+      </div>
+
+      <!-- Sitemap -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-secondary mb-4">Sitemap</h3>
+        <ul class="space-y-2">
+          {sitemapLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-neutral-300 hover:text-white transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Downloads -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-secondary mb-4">Downloads</h3>
+        <ul class="space-y-2">
+          {downloads.map((dl) => (
+            <li>
+              <a href={dl.href} target="_blank" rel="noopener noreferrer" class="text-sm text-neutral-300 hover:text-white transition-colors inline-flex items-center gap-1">
+                <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+                {dl.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-secondary mb-4">Contact Us</h3>
+        <address class="not-italic space-y-3 text-sm text-neutral-300">
+          <p>
+            The Lodge, Wood Lane<br />
+            Hinstock, Shropshire<br />
+            TF9 2TA
+          </p>
+          <p>
+            <a href="tel:03335671654" class="hover:text-white transition-colors flex items-center gap-2">
+              <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
+              0333 567 1654
+            </a>
+          </p>
+          <p>
+            <a href="mailto:enquiries@dipsticksengineering.co.uk" class="hover:text-white transition-colors flex items-center gap-2">
+              <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+              enquiries@dipsticksengineering.co.uk
+            </a>
+          </p>
+          <p class="text-xs text-neutral-400">
+            Mon–Fri: 9am – 5pm
+          </p>
+        </address>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-neutral-400">
+      <p>&copy; {currentYear} Dipsticks Engineering Services Ltd. All rights reserved.</p>
+      <p>Registered in England and Wales. Companies House No. 10632644</p>
+    </div>
+  </div>
+</footer>
