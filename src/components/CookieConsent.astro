@@ -1,0 +1,58 @@
+---
+// Simple GDPR cookie consent banner — no dependencies
+---
+
+<div
+  id="cookie-banner"
+  class="fixed bottom-0 inset-x-0 z-50 hidden"
+  role="dialog"
+  aria-label="Cookie consent"
+>
+  <div class="mx-auto max-w-7xl px-4 pb-4">
+    <div class="bg-primary-dark text-white rounded-xl shadow-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+      <p class="text-sm leading-relaxed flex-1">
+        We use cookies to improve your experience and for analytics via Google Tag Manager.
+        By continuing to browse this site, you agree to our use of cookies.
+      </p>
+      <div class="flex gap-3 shrink-0">
+        <button
+          id="cookie-accept"
+          class="px-4 py-2 bg-accent hover:bg-accent-dark text-white text-sm font-medium rounded-lg transition-colors"
+        >
+          Accept
+        </button>
+        <button
+          id="cookie-decline"
+          class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm font-medium rounded-lg transition-colors border border-white/20"
+        >
+          Decline
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const banner = document.getElementById('cookie-banner');
+  const consent = localStorage.getItem('cookie-consent');
+
+  if (!consent) {
+    banner?.classList.remove('hidden');
+  }
+
+  document.getElementById('cookie-accept')?.addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'accepted');
+    banner?.classList.add('hidden');
+  });
+
+  document.getElementById('cookie-decline')?.addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'declined');
+    banner?.classList.add('hidden');
+    // Disable GTM if declined
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'consent_update',
+      analytics_storage: 'denied',
+    });
+  });
+</script>
