@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Calibrated Dipsticks',
+  description: 'GRP calibrated dip rods that provide accurate and cost-effective volume readings for liquid storage tanks.',
+  brand: { '@type': 'Brand', name: 'Dipsticks Engineering' },
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'GBP',
+    price: '52.00',
+    priceValidUntil: '2027-12-31',
+    availability: 'https://schema.org/InStock',
+  },
+};
+
+const images = [
+  { src: '/images/dipsticks_for_oil_tanks.jpg', alt: 'Calibrated dipsticks for oil storage tanks', thumb: '/images/dipsticks_for_oil_tanks_thumbnail.jpg' },
+  { src: '/images/dipsticks_for_oil_tank.jpg', alt: 'Calibrated dip rod for oil tank', thumb: '/images/calibrated_dipstick_thumbnail.jpg' },
+  { src: '/images/Example of our dipsticks.png', alt: 'Examples of calibrated dipsticks', thumb: '/images/Example of our dipsticks_thumbnail.png' },
+  { src: '/images/t_section_grp_dipstick.jpg', alt: 'T-section GRP dipstick construction', thumb: '/images/t_section_grp_dipstick_thumbnail.jpg' },
+];
+
+const tankTypes = [
+  'Rectangular storage tanks',
+  'Horizontal cylindrical (with or without dished ends)',
+  'Vertical cylindrical storage tanks',
+  'Home heating oil tanks & oil drums',
+];
+
+const specs = [
+  { label: 'Material', value: 'Specially formulated GRP mixture ensuring correct electrical and thermal properties in accordance with BSI regulations.' },
+  { label: 'Lengths', value: 'From 1m up to 5m.' },
+  { label: 'Measurements', value: 'Litres, cubic metres, gallons, US gallons. Or regular height intervals: millimetres/inches.' },
+  { label: 'Suitable for', value: 'All non-consumption liquids: oil, diesel (DERV), petrol, paraffin, kerosene, hydraulic fluid.' },
+  { label: 'Customisable', value: 'Engrave your dipstick to your requirements: tank reference, telephone number, etc.' },
+];
+---
+
+<BaseLayout
+  title="Dipsticks — Calibrated Dip Rods"
+  description="GRP calibrated dipsticks for liquid storage tanks. Accurate volume readings for oil, diesel, petrol and other fuels. Custom manufactured from £52. Over 35 years experience."
+  jsonLd={productSchema}
+>
+  <PageHeader
+    title="Dipsticks"
+    subtitle="Calibrated dip rods that provide accurate and cost-effective volume readings"
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Products', href: '/' },
+      { label: 'Dipsticks' },
+    ]}
+  />
+
+  <section class="py-12 lg:py-16">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        <!-- Image gallery -->
+        <div class="lg:col-span-1">
+          <div class="space-y-4">
+            <div class="rounded-xl overflow-hidden border border-neutral-200 bg-white">
+              <img
+                id="main-image"
+                src={images[0].src}
+                alt={images[0].alt}
+                class="w-full aspect-square object-contain p-4"
+                width="400"
+                height="400"
+              />
+            </div>
+            <div class="grid grid-cols-4 gap-2">
+              {images.map((img, i) => (
+                <button
+                  class="gallery-thumb rounded-lg overflow-hidden border-2 border-neutral-200 hover:border-primary transition-colors aspect-square bg-white p-1"
+                  data-src={img.src}
+                  data-alt={img.alt}
+                  aria-label={`View ${img.alt}`}
+                >
+                  <img src={img.thumb} alt={img.alt} class="w-full h-full object-contain" width="80" height="80" loading="lazy" />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <!-- Tank types -->
+          <div class="mt-6 bg-white rounded-xl border border-neutral-200 p-5">
+            <h3 class="font-semibold text-neutral-900 mb-3">Storage Tank Applications</h3>
+            <p class="text-sm text-neutral-600 mb-3">Our dipsticks are ideally suited for:</p>
+            <ul class="space-y-2">
+              {tankTypes.map((tank) => (
+                <li class="flex items-start gap-2 text-sm text-neutral-700">
+                  <svg class="w-4 h-4 text-success mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                  {tank}
+                </li>
+              ))}
+            </ul>
+            <p class="mt-3 text-sm text-primary font-medium">Don't see your tank? <a href="/contact/" class="underline hover:no-underline">Just contact us!</a></p>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="lg:col-span-1">
+          <h2 class="text-xl font-semibold text-neutral-900">Description</h2>
+          <div class="mt-4 space-y-3 text-neutral-600 leading-relaxed">
+            <p>Our dipsticks are manufactured from T-section <abbr title="Glass Reinforced Plastic">GRP</abbr>, making them durable yet flexible and therefore ideally suited for use in demanding environments.</p>
+            <p>The dip rod can be calibrated to the exact dimensions of your storage tank, meaning they provide highly accurate liquid volume measurements at a cost-effective price.</p>
+            <p>We can also provide dipsticks marked at regular height intervals rather than volumes, such as every 10 millimetres.</p>
+          </div>
+
+          <h3 class="mt-8 text-lg font-semibold text-neutral-900">Specifications</h3>
+          <dl class="mt-4 space-y-4">
+            {specs.map((spec) => (
+              <div>
+                <dt class="text-sm font-semibold text-neutral-900">{spec.label}</dt>
+                <dd class="mt-1 text-sm text-neutral-600">{spec.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-1 space-y-6">
+          <!-- Price -->
+          <div class="bg-white rounded-xl border-2 border-primary p-6 text-center">
+            <p class="text-sm font-medium text-neutral-500 uppercase tracking-wider">Price</p>
+            <p class="mt-2 text-3xl font-bold text-neutral-900">
+              <span class="text-lg font-normal text-neutral-500">from</span> £52
+            </p>
+            <p class="mt-2 text-sm text-neutral-500">ex VAT & delivery</p>
+            <p class="mt-4 text-sm text-neutral-600">Each dipstick is calibrated to your tank dimensions and specific needs.</p>
+            <a href="/contact/" class="mt-4 block w-full py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded-lg transition-colors text-center">
+              Get a Quote
+            </a>
+          </div>
+
+          <!-- Further info -->
+          <div class="bg-white rounded-xl border border-neutral-200 p-5">
+            <h3 class="font-semibold text-neutral-900 mb-3">Further Info</h3>
+            <div class="space-y-3">
+              <a href="/downloads/DipsticksTankMeasurementsForm.pdf" target="_blank" class="flex items-center justify-between p-3 rounded-lg bg-neutral-50 hover:bg-neutral-100 transition-colors group">
+                <span class="text-sm font-medium text-neutral-700 group-hover:text-primary">Tank Measurement Guide</span>
+                <svg class="w-4 h-4 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+              </a>
+              <a href="/guides/dipstick-rubbing-guide/" class="flex items-center justify-between p-3 rounded-lg bg-neutral-50 hover:bg-neutral-100 transition-colors group">
+                <span class="text-sm font-medium text-neutral-700 group-hover:text-primary">Dipstick Rubbing Guide</span>
+                <svg class="w-4 h-4 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  document.querySelectorAll('.gallery-thumb').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const main = document.getElementById('main-image') as HTMLImageElement;
+      if (main) {
+        main.src = (btn as HTMLElement).dataset.src || '';
+        main.alt = (btn as HTMLElement).dataset.alt || '';
+      }
+      document.querySelectorAll('.gallery-thumb').forEach((b) =>
+        b.classList.replace('border-primary', 'border-neutral-200')
+      );
+      btn.classList.replace('border-neutral-200', 'border-primary');
+    });
+  });
+</script>

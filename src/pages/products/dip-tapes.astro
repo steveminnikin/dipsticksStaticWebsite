@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Dip Tapes',
+  description: 'High quality carbon steel dipping tapes for measuring liquid depth in storage tanks.',
+  brand: { '@type': 'Brand', name: 'Dipsticks Engineering' },
+};
+
+const images = [
+  { src: '/images/dip-tape-415-es.jpg', alt: 'Dip tape for storage tank measurement', thumb: '/images/dip-tape-415-es_thumbnail.jpg' },
+  { src: '/images/dip_tape_weight.jpg', alt: 'Dipping tape with graduated brass weight', thumb: '/images/dip_tape_weight_thumb.jpg' },
+  { src: '/images/dip_tape.jpg', alt: 'Tank gauging tape close-up', thumb: '/images/dip_tape_thumbnail.jpg' },
+];
+
+const specs = [
+  { label: 'Construction', value: 'Lightweight aluminium frame winder. High impact plastic handle. Complete with graduated brass dip weight.' },
+  { label: 'Units', value: 'Black etched with raised markings. Graduated in mm on one side, with feet, inches and 1/16ths on the reverse.' },
+  { label: 'Lengths', value: 'Available in 10, 20 & 30m versions.' },
+  { label: 'Accuracy', value: 'To EC Class II standard.' },
+  { label: 'Suitable for', value: 'General purpose tank dipping. Use with a strapping table to convert height readings into volume.' },
+];
+
+const useCases = [
+  'Use with a strapping table or uncalibrated dipstick to give volume readings',
+  'Calibration of other tank gauging systems',
+];
+---
+
+<BaseLayout
+  title="Dip Tapes — Tank Gauging Tapes"
+  description="High quality carbon steel dipping tapes for measuring liquid depth in storage tanks. Available in 10, 20 and 30m lengths. EC Class II accuracy."
+  jsonLd={productSchema}
+>
+  <PageHeader
+    title="Dip Tapes"
+    subtitle="Tank gauging tapes for dipping all types of storage tanks"
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Products', href: '/' },
+      { label: 'Dip Tapes' },
+    ]}
+  />
+
+  <section class="py-12 lg:py-16">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        <!-- Image gallery -->
+        <div class="lg:col-span-1">
+          <div class="space-y-4">
+            <div class="rounded-xl overflow-hidden border border-neutral-200 bg-white">
+              <img
+                id="main-image"
+                src={images[0].src}
+                alt={images[0].alt}
+                class="w-full aspect-square object-contain p-4"
+                width="400"
+                height="400"
+              />
+            </div>
+            <div class="grid grid-cols-3 gap-2">
+              {images.map((img) => (
+                <button
+                  class="gallery-thumb rounded-lg overflow-hidden border-2 border-neutral-200 hover:border-primary transition-colors aspect-square bg-white p-1"
+                  data-src={img.src}
+                  data-alt={img.alt}
+                  aria-label={`View ${img.alt}`}
+                >
+                  <img src={img.thumb} alt={img.alt} class="w-full h-full object-contain" width="80" height="80" loading="lazy" />
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="lg:col-span-1">
+          <h2 class="text-xl font-semibold text-neutral-900">Description</h2>
+          <div class="mt-4 space-y-3 text-neutral-600 leading-relaxed">
+            <p>A high quality carbon steel dipping tape for where a dipstick cannot be used.</p>
+            <p>Used on its own, it will provide a depth of liquid in a tank. When used in tandem with a <a href="/products/calibration-charts/" class="text-primary font-medium hover:underline">strapping table</a>, it can accurately measure the volume of liquid in a tank.</p>
+          </div>
+
+          <h3 class="mt-8 text-lg font-semibold text-neutral-900">Specifications</h3>
+          <dl class="mt-4 space-y-4">
+            {specs.map((spec) => (
+              <div>
+                <dt class="text-sm font-semibold text-neutral-900">{spec.label}</dt>
+                <dd class="mt-1 text-sm text-neutral-600">{spec.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-1 space-y-6">
+          <!-- Use cases -->
+          <div class="bg-white rounded-xl border border-neutral-200 p-5">
+            <h3 class="font-semibold text-neutral-900 mb-3">For Use In</h3>
+            <ul class="space-y-3">
+              {useCases.map((use) => (
+                <li class="flex items-start gap-2 text-sm text-neutral-700">
+                  <svg class="w-4 h-4 text-success mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                  {use}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- CTA -->
+          <a href="/contact/" class="block w-full py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded-lg transition-colors text-center">
+            Get a Quote
+          </a>
+
+          <!-- Related -->
+          <div class="bg-white rounded-xl border border-neutral-200 p-5">
+            <h3 class="font-semibold text-neutral-900 mb-3">Related Items</h3>
+            <div class="space-y-3">
+              <a href="/downloads/DipsticksTankMeasurementsForm.pdf" target="_blank" class="flex items-center justify-between p-3 rounded-lg bg-neutral-50 hover:bg-neutral-100 transition-colors group">
+                <span class="text-sm font-medium text-neutral-700 group-hover:text-primary">Tank Measurement Guide</span>
+                <svg class="w-4 h-4 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+              </a>
+              <a href="/products/calibration-charts/" class="flex items-center justify-between p-3 rounded-lg bg-neutral-50 hover:bg-neutral-100 transition-colors group">
+                <span class="text-sm font-medium text-neutral-700 group-hover:text-primary">Strapping Tables</span>
+                <svg class="w-4 h-4 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  document.querySelectorAll('.gallery-thumb').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const main = document.getElementById('main-image') as HTMLImageElement;
+      if (main) {
+        main.src = (btn as HTMLElement).dataset.src || '';
+        main.alt = (btn as HTMLElement).dataset.alt || '';
+      }
+      document.querySelectorAll('.gallery-thumb').forEach((b) =>
+        b.classList.replace('border-primary', 'border-neutral-200')
+      );
+      btn.classList.replace('border-neutral-200', 'border-primary');
+    });
+  });
+</script>
