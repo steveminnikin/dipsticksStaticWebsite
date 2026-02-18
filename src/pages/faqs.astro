@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     question: 'What types of tanks can you calibrate?',
-    answer: 'We can calibrate virtually any type of liquid storage tank including rectangular tanks, horizontal cylindrical tanks (with or without dished ends), vertical cylindrical tanks, home heating oil tanks, and oil drums. If you have an unusual tank shape, contact us — we have over 35 years of experience with all kinds of tanks.',
+    answer: 'We can calibrate virtually any type of liquid storage tank including rectangular tanks, horizontal cylindrical tanks (with or without dished ends), vertical cylindrical tanks, home heating oil tanks, and oil drums. If you have an unusual tank shape, <a href="/contact/">contact us</a> — we have over 35 years of experience with all kinds of tanks.',
   },
   {
     question: 'What liquids are your products suitable for?',
@@ -21,19 +21,19 @@ const faqs = [
   },
   {
     question: 'I don\'t know the dimensions of my tank. Can you still help?',
-    answer: 'Yes! With over 35 years in the industry, we have built up a vast database of tanks. There\'s a good chance we already have your tank details on file. Alternatively, if you have an existing dipstick (even a broken one), you can send us a rubbing and we can manufacture a replacement.',
+    answer: 'Yes! With over 35 years in the industry, we have built up a vast database of tanks. There\'s a good chance we already have your tank details on file. Alternatively, if you have an existing dipstick (even a broken one), you can send us a <a href="/guides/dipstick-rubbing-guide/">rubbing</a> and we can manufacture a replacement.',
   },
   {
     question: 'What is a strapping table?',
-    answer: 'A strapping table (also known as a calibration chart) displays the same volume calculations as a dipstick, but in table format for quick reference. You use it together with a dip tape — measure the depth of liquid with the tape, then look up the corresponding volume on the table. We provide them in both durable hard copy and digital format.',
+    answer: 'A strapping table (also known as a <a href="/products/calibration-charts/">calibration chart</a>) displays the same volume calculations as a dipstick, but in table format for quick reference. You use it together with a <a href="/products/dip-tapes/">dip tape</a> — measure the depth of liquid with the tape, then look up the corresponding volume on the table. We provide them in both durable hard copy and digital format.',
   },
   {
     question: 'How much do your dipsticks cost?',
-    answer: 'Dipsticks start from £52 (ex VAT and delivery). Each dipstick is custom-manufactured to your tank dimensions, so the exact price depends on the length and your specific requirements. Contact us for a quote.',
+    answer: 'Dipsticks start from £52 (ex VAT and delivery). Each dipstick is custom-manufactured to your tank dimensions, so the exact price depends on the length and your specific requirements. <a href="/request-a-quote/">Request a quote</a> for an accurate price.',
   },
   {
     question: 'Can you convert a gallons dipstick to litres?',
-    answer: 'Yes. If you have an existing dipstick marked in gallons, you can send us a rubbing and we can manufacture a replacement marked in litres (or any other unit). See our rubbing guide for instructions.',
+    answer: 'Yes. If you have an existing dipstick marked in gallons, you can send us a rubbing and we can manufacture a replacement marked in litres (or any other unit). See our <a href="/guides/dipstick-rubbing-guide/">rubbing guide</a> for instructions.',
   },
   {
     question: 'What units do you offer?',
@@ -41,15 +41,15 @@ const faqs = [
   },
   {
     question: 'How do I take a rubbing of an existing dipstick?',
-    answer: 'You\'ll need a strip of paper (till roll is ideal), tape, and a pencil. Tape the paper to the base of the dipstick, stretch it along the length, and rub over the markings with the pencil. See our detailed rubbing guide for full instructions.',
+    answer: 'You\'ll need a strip of paper (till roll is ideal), tape, and a pencil. Tape the paper to the base of the dipstick, stretch it along the length, and rub over the markings with the pencil. See our <a href="/guides/dipstick-rubbing-guide/">detailed rubbing guide</a> for full instructions.',
   },
   {
     question: 'How do I send you my tank details?',
-    answer: 'The easiest way is to download our Tank Measurement Guide PDF, fill in your tank dimensions, and send it to us via email or post. Alternatively, just contact us by phone or email and we\'ll guide you through the process.',
+    answer: 'The easiest way is to download our <a href="/downloads/DipsticksTankMeasurementsForm.pdf" target="_blank">Tank Measurement Guide (PDF)</a>, fill in your tank dimensions, and send it to us via email or post. Alternatively, just <a href="/contact/">contact us</a> by phone or email and we\'ll guide you through the process.',
   },
   {
     question: 'How long does delivery take?',
-    answer: 'Lead times depend on the complexity of the order. Contact us for current lead times and we\'ll give you an estimated delivery date when we quote.',
+    answer: 'Lead times depend on the complexity of the order. <a href="/contact/">Contact us</a> for current lead times and we\'ll give you an estimated delivery date when we quote.',
   },
 ];
 
@@ -61,7 +61,7 @@ const faqSchema = {
     name: faq.question,
     acceptedAnswer: {
       '@type': 'Answer',
-      text: faq.answer,
+      text: faq.answer.replace(/<[^>]*>/g, ''),
     },
   })),
 };
@@ -90,8 +90,8 @@ const faqSchema = {
               <span class="pr-4">{faq.question}</span>
               <svg class="w-5 h-5 text-neutral-400 shrink-0 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>
             </summary>
-            <div class="px-5 pb-5 text-neutral-600 leading-relaxed border-t border-neutral-100 pt-4">
-              <p>{faq.answer}</p>
+            <div class="px-5 pb-5 text-neutral-600 leading-relaxed border-t border-neutral-100 pt-4 [&_a]:text-primary [&_a]:underline hover:[&_a]:no-underline">
+              <p set:html={faq.answer} />
             </div>
           </details>
         ))}

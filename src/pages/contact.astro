@@ -186,3 +186,13 @@ import PageHeader from '../components/PageHeader.astro';
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  document.querySelector('form[name="contact"]')?.addEventListener('submit', (e) => {
+    const btn = (e.target as HTMLFormElement).querySelector('button[type="submit"]') as HTMLButtonElement;
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+    }
+  });
+</script>

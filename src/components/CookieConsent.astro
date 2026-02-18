@@ -11,8 +11,8 @@
   <div class="mx-auto max-w-7xl px-4 pb-4">
     <div class="bg-primary-dark text-white rounded-xl shadow-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
       <p class="text-sm leading-relaxed flex-1">
-        We use cookies to improve your experience and for analytics via Google Tag Manager.
-        By continuing to browse this site, you agree to our use of cookies.
+        We use cookies for analytics via Google Tag Manager to help us improve this site.
+        See our <a href="/privacy-policy/" class="underline hover:no-underline">privacy policy</a> for details.
       </p>
       <div class="flex gap-3 shrink-0">
         <button
@@ -43,16 +43,12 @@
   document.getElementById('cookie-accept')?.addEventListener('click', () => {
     localStorage.setItem('cookie-consent', 'accepted');
     banner?.classList.add('hidden');
+    // Load GTM now that consent has been given
+    if (typeof loadGTM === 'function') loadGTM();
   });
 
   document.getElementById('cookie-decline')?.addEventListener('click', () => {
     localStorage.setItem('cookie-consent', 'declined');
     banner?.classList.add('hidden');
-    // Disable GTM if declined
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'consent_update',
-      analytics_storage: 'denied',
-    });
   });
 </script>

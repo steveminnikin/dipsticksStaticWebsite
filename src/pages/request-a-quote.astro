@@ -118,9 +118,9 @@ import PageHeader from '../components/PageHeader.astro';
                   <div class="bg-accent/5 border border-accent/20 rounded-lg p-4">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
-                        <label for="tank-1-rod-length" class="block text-sm font-semibold text-neutral-900 mb-1">Total Rod Length <span class="text-error">*</span></label>
-                        <input type="text" id="tank-1-rod-length" name="tank-1-rod-length" required class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="e.g. 1500mm (up to 5 metres)" />
-                        <p class="mt-1 text-xs text-neutral-500">This is the main factor in pricing your quote.</p>
+                        <label for="tank-1-rod-length" class="block text-sm font-semibold text-neutral-900 mb-1">Total Rod Length</label>
+                        <input type="text" id="tank-1-rod-length" name="tank-1-rod-length" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="e.g. 1500mm (up to 5 metres)" />
+                        <p class="mt-1 text-xs text-neutral-500">If known — otherwise provide your tank dimensions below and we'll calculate it.</p>
                       </div>
                       <div>
                         <label for="tank-1-quantity" class="block text-sm font-semibold text-neutral-900 mb-1">Quantity</label>
@@ -499,6 +499,15 @@ import PageHeader from '../components/PageHeader.astro';
 
   // Initialise the first tank block
   attachTankListeners(tanksContainer.querySelector('.tank-block')!);
+
+  // Disable submit button on form submission to prevent double-clicks
+  document.querySelector('form[name="quote-request"]')?.addEventListener('submit', (e) => {
+    const btn = (e.target as HTMLFormElement).querySelector('button[type="submit"]') as HTMLButtonElement;
+    if (btn) {
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+    }
+  });
 </script>
 
 <style>
