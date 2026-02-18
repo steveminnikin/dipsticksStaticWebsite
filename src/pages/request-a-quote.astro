@@ -1,0 +1,422 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<BaseLayout
+  title="Request a Quote"
+  description="Request a quote for a dipstick, dip tape or calibration chart. Provide your tank measurements and we'll give you an accurate price. Dipsticks Engineering — over 35 years of expertise."
+>
+  <PageHeader
+    title="Request a Quote"
+    subtitle="Provide your tank details and we'll get back to you with a price"
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Request a Quote' },
+    ]}
+  />
+
+  <section class="py-12 lg:py-16">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+        <!-- Form -->
+        <div class="lg:col-span-3">
+          <div class="bg-white rounded-xl border border-neutral-200 p-6 lg:p-8">
+            <form
+              name="quote-request"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+              class="space-y-8"
+            >
+              <input type="hidden" name="form-name" value="quote-request" />
+              <p class="hidden">
+                <label>Don't fill this out: <input name="bot-field" /></label>
+              </p>
+
+              <!-- Section 1: Contact Details -->
+              <fieldset>
+                <legend class="text-lg font-semibold text-neutral-900 mb-4">Your Details</legend>
+                <div class="space-y-5">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label for="name" class="block text-sm font-medium text-neutral-700 mb-1">Name <span class="text-error">*</span></label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        autocomplete="name"
+                        class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors"
+                        placeholder="Your name"
+                      />
+                    </div>
+                    <div>
+                      <label for="company" class="block text-sm font-medium text-neutral-700 mb-1">Company</label>
+                      <input
+                        type="text"
+                        id="company"
+                        name="company"
+                        autocomplete="organization"
+                        class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors"
+                        placeholder="Your company (optional)"
+                      />
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label for="email" class="block text-sm font-medium text-neutral-700 mb-1">Email <span class="text-error">*</span></label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        autocomplete="email"
+                        class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors"
+                        placeholder="your@email.co.uk"
+                      />
+                    </div>
+                    <div>
+                      <label for="phone" class="block text-sm font-medium text-neutral-700 mb-1">Phone</label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        autocomplete="tel"
+                        class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors"
+                        placeholder="Your phone number"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <hr class="border-neutral-200" />
+
+              <!-- Section 2: Product & Tank Type -->
+              <fieldset>
+                <legend class="text-lg font-semibold text-neutral-900 mb-4">Tank Details</legend>
+                <div class="space-y-5">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label for="product-type" class="block text-sm font-medium text-neutral-700 mb-1">Product Required <span class="text-error">*</span></label>
+                      <select
+                        id="product-type"
+                        name="product-type"
+                        required
+                        class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors bg-white"
+                      >
+                        <option value="dipstick">Dipstick</option>
+                        <option value="calibration-chart">Calibration Chart</option>
+                        <option value="dip-tape">Dip Tape</option>
+                        <option value="dipstick-and-chart">Dipstick &amp; Calibration Chart</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label for="quantity" class="block text-sm font-medium text-neutral-700 mb-1">Quantity <span class="text-error">*</span></label>
+                      <input
+                        type="number"
+                        id="quantity"
+                        name="quantity"
+                        required
+                        min="1"
+                        value="1"
+                        class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label for="tank-type" class="block text-sm font-medium text-neutral-700 mb-1">Tank Type <span class="text-error">*</span></label>
+                    <select
+                      id="tank-type"
+                      name="tank-type"
+                      required
+                      class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors bg-white"
+                    >
+                      <option value="">-- Select your tank type --</option>
+                      <option value="rectangular">Rectangular</option>
+                      <option value="cylindrical-dished-end">Cylindrical Dished End</option>
+                      <option value="cylindrical-flat-end">Cylindrical Flat End</option>
+                      <option value="vertical-cylindrical">Vertical Cylindrical</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- Section 3: Tank Measurements (conditional) -->
+              <fieldset id="measurements-section" class="hidden">
+                <legend class="text-lg font-semibold text-neutral-900 mb-2">Tank Measurements</legend>
+                <p class="text-sm text-neutral-500 mb-4">All measurements in millimetres unless stated otherwise.</p>
+
+                <!-- Rectangular fields -->
+                <div id="fields-rectangular" class="hidden space-y-5">
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                    <div>
+                      <label for="rect-length" class="block text-sm font-medium text-neutral-700 mb-1">Length (mm)</label>
+                      <input type="text" id="rect-length" name="rect-length" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="e.g. 1200" />
+                    </div>
+                    <div>
+                      <label for="rect-width" class="block text-sm font-medium text-neutral-700 mb-1">Width (mm)</label>
+                      <input type="text" id="rect-width" name="rect-width" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="e.g. 600" />
+                    </div>
+                    <div>
+                      <label for="rect-height" class="block text-sm font-medium text-neutral-700 mb-1">Height (mm)</label>
+                      <input type="text" id="rect-height" name="rect-height" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="e.g. 800" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Cylindrical Dished End fields -->
+                <div id="fields-cylindrical-dished-end" class="hidden space-y-5">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label for="dished-diameter" class="block text-sm font-medium text-neutral-700 mb-1">Internal Diameter (mm)</label>
+                      <input type="text" id="dished-diameter" name="dished-diameter" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="e.g. 1500" />
+                    </div>
+                    <div>
+                      <label for="dished-tangent-length" class="block text-sm font-medium text-neutral-700 mb-1">Tangent to Tangent Length (mm)</label>
+                      <input type="text" id="dished-tangent-length" name="dished-tangent-length" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="e.g. 2000" />
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                    <div>
+                      <label for="dished-overall-length" class="block text-sm font-medium text-neutral-700 mb-1">Overall Length (mm)</label>
+                      <input type="text" id="dished-overall-length" name="dished-overall-length" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="e.g. 2400" />
+                    </div>
+                    <div>
+                      <label for="dished-spherical-radius" class="block text-sm font-medium text-neutral-700 mb-1">Spherical Radius (if known)</label>
+                      <input type="text" id="dished-spherical-radius" name="dished-spherical-radius" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="Optional" />
+                    </div>
+                    <div>
+                      <label for="dished-knuckle-radius" class="block text-sm font-medium text-neutral-700 mb-1">Knuckle Radius (if known)</label>
+                      <input type="text" id="dished-knuckle-radius" name="dished-knuckle-radius" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="Optional" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Cylindrical Flat End fields -->
+                <div id="fields-cylindrical-flat-end" class="hidden space-y-5">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label for="flat-diameter" class="block text-sm font-medium text-neutral-700 mb-1">Internal Diameter (mm)</label>
+                      <input type="text" id="flat-diameter" name="flat-diameter" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="e.g. 1500" />
+                    </div>
+                    <div>
+                      <label for="flat-length" class="block text-sm font-medium text-neutral-700 mb-1">Length (mm)</label>
+                      <input type="text" id="flat-length" name="flat-length" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="e.g. 2000" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Vertical Cylindrical fields -->
+                <div id="fields-vertical-cylindrical" class="hidden space-y-5">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label for="vertical-diameter" class="block text-sm font-medium text-neutral-700 mb-1">Internal Diameter (mm)</label>
+                      <input type="text" id="vertical-diameter" name="vertical-diameter" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="e.g. 1500" />
+                    </div>
+                    <div>
+                      <label for="vertical-length" class="block text-sm font-medium text-neutral-700 mb-1">Length / Height (mm)</label>
+                      <input type="text" id="vertical-length" name="vertical-length" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="e.g. 3000" />
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+
+              <!-- Section 4: Tilt & Dip Point -->
+              <fieldset id="tilt-section" class="hidden">
+                <legend class="text-lg font-semibold text-neutral-900 mb-2">Tilt &amp; Dip Point</legend>
+                <p class="text-sm text-neutral-500 mb-4">If your tank is tilted or you need to specify the dip point, complete the fields below.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label for="dip-point" class="block text-sm font-medium text-neutral-700 mb-1">Dip Point (from lowest end)</label>
+                    <input type="text" id="dip-point" name="dip-point" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="e.g. 300mm from end" />
+                  </div>
+                  <div>
+                    <label for="tilt" class="block text-sm font-medium text-neutral-700 mb-1">Tilt (angle or height difference)</label>
+                    <input type="text" id="tilt" name="tilt" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="e.g. 2 degrees or 50mm" />
+                  </div>
+                </div>
+              </fieldset>
+
+              <hr class="border-neutral-200" />
+
+              <!-- Section 5: Dipstick Options -->
+              <fieldset>
+                <legend class="text-lg font-semibold text-neutral-900 mb-4">Dipstick Options</legend>
+                <div class="space-y-5">
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                    <div>
+                      <label for="rod-length" class="block text-sm font-medium text-neutral-700 mb-1">Total Rod Length</label>
+                      <input type="text" id="rod-length" name="rod-length" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="Up to 5 metres" />
+                    </div>
+                    <div>
+                      <label for="liquid-type" class="block text-sm font-medium text-neutral-700 mb-1">Liquid Stored</label>
+                      <select
+                        id="liquid-type"
+                        name="liquid-type"
+                        class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors bg-white"
+                      >
+                        <option value="">-- Select --</option>
+                        <option value="heating-oil">Heating Oil (Kerosene)</option>
+                        <option value="diesel">Diesel (DERV)</option>
+                        <option value="gas-oil">Gas Oil</option>
+                        <option value="petrol">Petrol</option>
+                        <option value="hydraulic-fluid">Hydraulic Fluid</option>
+                        <option value="water">Water</option>
+                        <option value="other">Other (specify in notes)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label for="preferred-units" class="block text-sm font-medium text-neutral-700 mb-1">Preferred Units</label>
+                      <select
+                        id="preferred-units"
+                        name="preferred-units"
+                        class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors bg-white"
+                      >
+                        <option value="litres">Litres</option>
+                        <option value="gallons">Gallons</option>
+                        <option value="litres-and-gallons">Litres &amp; Gallons</option>
+                        <option value="other">Other (specify in notes)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label for="engraving" class="block text-sm font-medium text-neutral-700 mb-1">Additional Engraving Text</label>
+                    <input type="text" id="engraving" name="engraving" class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" placeholder="e.g. your order reference, tank ID, site name" />
+                    <p class="mt-1 text-xs text-neutral-500">Any additional text you'd like engraved onto the dipstick.</p>
+                  </div>
+                </div>
+              </fieldset>
+
+              <hr class="border-neutral-200" />
+
+              <!-- Section 6: Additional Notes -->
+              <div>
+                <label for="notes" class="block text-sm font-medium text-neutral-700 mb-1">Additional Notes</label>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows="4"
+                  class="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-neutral-900 placeholder-neutral-400 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors resize-y"
+                  placeholder="Anything else we should know? e.g. multiple tanks, delivery requirements, urgency, etc."
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full sm:w-auto px-8 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded-lg transition-colors"
+              >
+                Submit Quote Request
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-2 space-y-6">
+          <div class="bg-white rounded-xl border border-neutral-200 p-6">
+            <h3 class="font-semibold text-neutral-900 mb-4">How It Works</h3>
+            <ol class="space-y-4">
+              {[
+                { step: '1', title: 'Submit your details', desc: 'Fill in the form with your tank measurements and requirements.' },
+                { step: '2', title: 'We review & quote', desc: 'We\'ll check your details and send you an accurate price by email.' },
+                { step: '3', title: 'We manufacture', desc: 'Once confirmed, we produce your product to your exact specifications.' },
+              ].map((item) => (
+                <li class="flex gap-3">
+                  <span class="flex-shrink-0 w-7 h-7 bg-primary text-white text-sm font-bold rounded-full flex items-center justify-center">{item.step}</span>
+                  <div>
+                    <p class="text-sm font-medium text-neutral-900">{item.title}</p>
+                    <p class="text-sm text-neutral-600">{item.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <div class="bg-white rounded-xl border border-neutral-200 p-6">
+            <h3 class="font-semibold text-neutral-900 mb-4">Contact Details</h3>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
+                <div>
+                  <p class="text-sm font-medium text-neutral-900">Phone</p>
+                  <a href="tel:03335671654" class="text-sm text-primary hover:underline">0333 567 1654</a>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                <div>
+                  <p class="text-sm font-medium text-neutral-900">Email</p>
+                  <a href="mailto:enquiries@dipsticksengineering.co.uk" class="text-sm text-primary hover:underline">enquiries@dipsticksengineering.co.uk</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-primary/5 rounded-xl border border-primary/20 p-6">
+            <h3 class="font-semibold text-neutral-900 mb-2">Not sure about your measurements?</h3>
+            <p class="text-sm text-neutral-600 mb-3">
+              Don't worry — fill in what you can and we'll help with the rest. You can also download our measurement guide for reference.
+            </p>
+            <a href="/downloads/DipsticksTankMeasurementsForm.pdf" target="_blank" class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+              Download Tank Measurement Guide (PDF)
+            </a>
+          </div>
+
+          <div class="bg-white rounded-xl border border-neutral-200 p-6">
+            <h3 class="font-semibold text-neutral-900 mb-2">Prefer to chat?</h3>
+            <p class="text-sm text-neutral-600 mb-3">
+              If you'd rather discuss your requirements, use our general contact form or give us a call.
+            </p>
+            <a href="/contact/" class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">
+              Go to Contact Form
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const tankTypeSelect = document.getElementById('tank-type') as HTMLSelectElement;
+  const measurementsSection = document.getElementById('measurements-section');
+  const tiltSection = document.getElementById('tilt-section');
+
+  const fieldGroups: Record<string, string> = {
+    'rectangular': 'fields-rectangular',
+    'cylindrical-dished-end': 'fields-cylindrical-dished-end',
+    'cylindrical-flat-end': 'fields-cylindrical-flat-end',
+    'vertical-cylindrical': 'fields-vertical-cylindrical',
+  };
+
+  function updateMeasurementFields() {
+    const selected = tankTypeSelect.value;
+
+    // Hide all field groups
+    Object.values(fieldGroups).forEach((id) => {
+      document.getElementById(id)?.classList.add('hidden');
+    });
+
+    if (selected && fieldGroups[selected]) {
+      // Show measurements section and the relevant field group
+      measurementsSection?.classList.remove('hidden');
+      tiltSection?.classList.remove('hidden');
+      document.getElementById(fieldGroups[selected])?.classList.remove('hidden');
+    } else {
+      // Hide measurements and tilt sections
+      measurementsSection?.classList.add('hidden');
+      tiltSection?.classList.add('hidden');
+    }
+  }
+
+  tankTypeSelect?.addEventListener('change', updateMeasurementFields);
+
+  // Run on page load in case of browser back-button pre-fill
+  updateMeasurementFields();
+</script>
