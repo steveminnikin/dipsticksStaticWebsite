@@ -211,15 +211,22 @@ function generateRubbingGuide() {
 
   // Title
   doc.fontSize(20).fill(C.neutral900).font('Helvetica-Bold').text('Dipstick Rubbing Guide', { align: 'center' });
-  doc.moveDown(0.3);
-  doc.fontSize(11).fill(C.neutral500).font('Helvetica').text(
+  doc.moveDown(0.2);
+  doc.fontSize(10).fill(C.neutral500).font('Helvetica').text(
     'How to take a rubbing of an existing dipstick so we can manufacture a replacement.',
     { align: 'center' }
   );
-  doc.moveDown(1);
+  doc.moveDown(0.5);
 
-  // You Will Need section
-  sectionTitle(doc, 'You Will Need');
+  // You Will Need section (compact inline version)
+  doc.moveDown(0.3);
+  doc.fontSize(13).fill(C.primary).font('Helvetica-Bold').text('You Will Need');
+  const ulY = doc.y + 2;
+  doc.save();
+  doc.moveTo(50, ulY).lineTo(200, ulY).lineWidth(2).strokeColor(C.accent).stroke();
+  doc.restore();
+  doc.moveDown(0.3);
+
   const items = [
     'Lint-free cloth',
     'Gloves',
@@ -229,33 +236,47 @@ function generateRubbingGuide() {
   ];
   items.forEach((item) => {
     bulletItem(doc, item, 60);
-    doc.moveDown(0.15);
+    doc.moveDown(0.05);
   });
-  doc.moveDown(0.4);
+  doc.moveDown(0.2);
 
-  // Preparation
-  sectionTitle(doc, 'Preparation');
+  // Preparation (compact section title)
+  doc.moveDown(0.2);
+  doc.fontSize(13).fill(C.primary).font('Helvetica-Bold').text('Preparation');
+  const prepUlY = doc.y + 2;
+  doc.save();
+  doc.moveTo(50, prepUlY).lineTo(200, prepUlY).lineWidth(2).strokeColor(C.accent).stroke();
+  doc.restore();
+  doc.moveDown(0.25);
+
   bodyText(doc, 'Wearing gloves, assemble the dipsticks you want rubbings of in a safe area and examine them for damage. If damage is evident then take care when handling them.');
-  doc.moveDown(0.3);
+  doc.moveDown(0.15);
   bodyText(doc, 'Dry the dipsticks with the cloth and lay them side by side so that they can be examined to see if any are identical (all lines need to line up, not just equal volumes).');
-  doc.moveDown(0.3);
+  doc.moveDown(0.2);
 
-  // Tip box
+  // Tip box (compact)
   const tipY = doc.y;
   doc.save();
-  doc.roundedRect(50, tipY, doc.page.width - 100, 40, 6).fill(C.secondary);
-  doc.fontSize(9).fill(C.primary).font('Helvetica-Bold').text('Tip: ', 65, tipY + 12, { continued: true });
+  doc.roundedRect(50, tipY, doc.page.width - 100, 36, 6).fill(C.secondary);
+  doc.fontSize(8.5).fill(C.primary).font('Helvetica-Bold').text('Tip: ', 65, tipY + 10, { continued: true });
   doc.font('Helvetica').text(
     'If there are identical dipsticks then only one rubbing need be taken. Just note on the rubbing that you require multiple dipsticks from this one rubbing.',
     { width: doc.page.width - 145 }
   );
   doc.restore();
-  doc.y = tipY + 52;
+  doc.y = tipY + 42;
 
-  // Method
-  sectionTitle(doc, 'Method');
+  // Method (compact section title)
+  doc.moveDown(0.2);
+  doc.fontSize(13).fill(C.primary).font('Helvetica-Bold').text('Method');
+  const methUlY = doc.y + 2;
+  doc.save();
+  doc.moveTo(50, methUlY).lineTo(200, methUlY).lineWidth(2).strokeColor(C.accent).stroke();
+  doc.restore();
+  doc.moveDown(0.25);
+
   bodyText(doc, 'The rubbing is done in the manner of taking a brass rubbing of a coin or plaque:');
-  doc.moveDown(0.3);
+  doc.moveDown(0.2);
 
   const steps = [
     'Tape the paper strip at the base of the dipstick.',
@@ -264,13 +285,13 @@ function generateRubbingGuide() {
   ];
   steps.forEach((step, i) => {
     numberedStep(doc, i + 1, step, 55);
-    doc.moveDown(0.6);
+    doc.moveDown(0.35);
   });
-  doc.moveDown(0.3);
+  doc.moveDown(0.1);
 
   // Checklist
-  doc.fontSize(11).fill(C.neutral900).font('Helvetica-Bold').text('Please make sure the following are clearly visible:');
-  doc.moveDown(0.4);
+  doc.fontSize(10).fill(C.neutral900).font('Helvetica-Bold').text('Please make sure the following are clearly visible:');
+  doc.moveDown(0.25);
 
   const checks = [
     'The base of the dipstick',
@@ -280,39 +301,39 @@ function generateRubbingGuide() {
   ];
   checks.forEach((check) => {
     checkItem(doc, check, 60);
-    doc.moveDown(0.2);
+    doc.moveDown(0.05);
   });
-  doc.moveDown(0.4);
+  doc.moveDown(0.2);
 
-  // Warning box
+  // Warning box (compact)
   const warnY = doc.y;
   doc.save();
-  doc.roundedRect(50, warnY, doc.page.width - 100, 35, 6).fill('#FEF3C7');
-  doc.fontSize(9).fill(C.accentDark).font('Helvetica-Bold').text(
+  doc.roundedRect(50, warnY, doc.page.width - 100, 30, 6).fill('#FEF3C7');
+  doc.fontSize(8.5).fill(C.accentDark).font('Helvetica-Bold').text(
     'If any of the above are not clearly visible, use the pencil to mark the line or show the number. If you can\'t see them then neither can we!',
-    65, warnY + 10, { width: doc.page.width - 130 }
+    65, warnY + 8, { width: doc.page.width - 130 }
   );
   doc.restore();
-  doc.y = warnY + 47;
+  doc.y = warnY + 36;
 
   // Final note
   bodyText(doc, 'On the upper, blank part of the rubbing, write down:');
-  doc.moveDown(0.2);
+  doc.moveDown(0.1);
   bulletItem(doc, 'The overall length of the dipstick you require', 60);
-  doc.moveDown(0.1);
+  doc.moveDown(0.05);
   bulletItem(doc, 'The tank reference (if applicable)', 60);
-  doc.moveDown(0.1);
+  doc.moveDown(0.05);
   bulletItem(doc, 'The type of fuel the tank contains', 60);
-  doc.moveDown(0.8);
+  doc.moveDown(0.4);
 
-  // CTA box
+  // CTA box (compact)
   const ctaY = doc.y;
   doc.save();
-  doc.roundedRect(50, ctaY, doc.page.width - 100, 50, 6).lineWidth(1.5).strokeColor(C.accent).stroke();
-  doc.fontSize(10).fill(C.neutral900).font('Helvetica-Bold').text('Ready to send your rubbing?', 65, ctaY + 10);
-  doc.fontSize(9).fill(C.neutral700).font('Helvetica').text(
+  doc.roundedRect(50, ctaY, doc.page.width - 100, 44, 6).lineWidth(1.5).strokeColor(C.accent).stroke();
+  doc.fontSize(10).fill(C.neutral900).font('Helvetica-Bold').text('Ready to send your rubbing?', 65, ctaY + 8);
+  doc.fontSize(8.5).fill(C.neutral700).font('Helvetica').text(
     'Post it to: Dipsticks Engineering, The Lodge, Wood Lane, Hinstock, Shropshire TF9 2TA — or request a quote online at www.dipsticksengineering.co.uk/request-a-quote/',
-    65, ctaY + 26, { width: doc.page.width - 130 }
+    65, ctaY + 22, { width: doc.page.width - 130 }
   );
   doc.restore();
 
