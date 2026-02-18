@@ -1,0 +1,285 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const products = [
+  {
+    title: 'Dipsticks',
+    href: '/products/dipsticks/',
+    icon: 'bars',
+    description: 'GRP rods calibrated to your tank for quick, accurate and cost-effective liquid volume readings.',
+  },
+  {
+    title: 'Dip Tapes',
+    href: '/products/dip-tapes/',
+    icon: 'tape',
+    description: 'High quality carbon steel dipping tapes for measuring liquid depth in any storage tank.',
+  },
+  {
+    title: 'Calibration Charts',
+    href: '/products/calibration-charts/',
+    icon: 'table',
+    description: 'Strapping tables that convert liquid depth measurements into accurate volume readings.',
+  },
+];
+
+const solutions = [
+  {
+    title: 'New tank installations',
+    description: 'Using the manufacturer\'s dimensions, we produce a calibrated dip rod which is highly accurate and easy to use yet robust enough for the most demanding environments.',
+  },
+  {
+    title: 'Replacement dipsticks',
+    description: 'Lost or broken your dipstick? We can manufacture a new one for your storage tank, even if it\'s underground and you don\'t know the dimensions.',
+  },
+  {
+    title: 'Gauge calibration',
+    description: 'Modern gauges require calibrating to the tank they\'re fitted to. Our calibration charts enable gauges to be set up correctly.',
+  },
+  {
+    title: 'Strapping tables',
+    description: 'Use our calibration charts together with a dip tape for accurate volume measurements. One dip tape can be used for multiple tanks.',
+  },
+  {
+    title: 'Unit conversions',
+    description: 'We supply products in whatever units you require — millimetres and litres, inches and gallons, or any combination. We can also convert existing dipsticks.',
+  },
+  {
+    title: 'Custom products',
+    description: 'Whatever your requirements, we can provide them. Multiple dipsticks clearly marked with your details and references — no problem.',
+  },
+];
+
+const tankTypes = [
+  { name: 'Rectangular', image: '/images/dipstick_for_steel_heating_oil_tank_thumbnail.jpg', alt: 'Dipstick for rectangular steel heating oil tank' },
+  { name: 'Horizontal Cylindrical', image: '/images/dipstick_for_horizontal_cylindrical_oil_tank_thumbnail.jpg', alt: 'Dipstick for horizontal cylindrical storage tank' },
+  { name: 'Vertical Cylindrical', image: '/images/vertical-cylindrical-storage-tank-thumbnail.jpg', alt: 'Dipstick for vertical cylindrical storage tank' },
+  { name: 'Home Heating Oil', image: '/images/heating_oil_tank_dipstick_thumbnail.jpg', alt: 'Dipstick for home heating oil tank' },
+  { name: 'Oil Drums', image: '/images/dipstick_for_oil_drum_thumbnail.jpg', alt: 'Dipstick for oil drum' },
+];
+
+const liquids = ['Petrol', 'Diesel (DERV)', 'Heating Oil', 'Gas Oil', 'Kerosene', 'Hydraulic Fluid'];
+---
+
+<BaseLayout
+  title="Dipsticks, Dip Tapes and Calibration Charts"
+  description="Precision liquid storage tank measurement products manufactured to your exact specifications. Dipsticks, dip tapes and strapping tables for oil, diesel, petrol and other liquids. Over 35 years of expertise."
+>
+  <!-- Hero -->
+  <section class="relative bg-primary overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-dark to-primary opacity-90"></div>
+    <div class="relative mx-auto max-w-7xl px-4 py-16 sm:py-20 lg:py-28">
+      <div class="max-w-3xl">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
+          Dipsticks, Dip Tapes and Calibration Charts
+        </h1>
+        <p class="mt-4 text-lg sm:text-xl text-secondary leading-relaxed">
+          Fuel measurement for above and underground tanks containing oil, diesel, petrol and other liquids.
+        </p>
+        <p class="mt-3 text-base text-neutral-300">
+          Precise, reliable and cost-effective calibration and measurement of rectangular, vertical and horizontal cylindrical tanks.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="/request-a-quote/" class="inline-flex items-center px-6 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded-lg transition-colors shadow-lg">
+            Get a Quote
+          </a>
+          <a href="#products" class="inline-flex items-center px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-colors border border-white/20">
+            View Products
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product cards -->
+  <section id="products" class="py-16 lg:py-20">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 -mt-24 relative z-10">
+        {products.map((product) => (
+          <a href={product.href} class="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 p-6 lg:p-8 border border-neutral-200 hover:border-primary/20">
+            <div class="w-12 h-12 bg-secondary/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary/50 transition-colors">
+              <svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                {product.icon === 'bars' && <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />}
+                {product.icon === 'tape' && <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />}
+                {product.icon === 'table' && <path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0112 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25m-17.25 0h7.5c.621 0 1.125.504 1.125 1.125M3.375 8.25c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m17.25-3.75h-7.5c-.621 0-1.125.504-1.125 1.125m8.625-1.125c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M12 10.875v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125M12 12h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125M21 12c0 .621-.504 1.125-1.125 1.125m-5.25 0c.621 0 1.125.504 1.125 1.125m-12.75-1.125c-.621 0-1.125.504-1.125 1.125m0 1.5v-1.5m0 0c0-.621.504-1.125 1.125-1.125m0 0h17.25" />}
+              </svg>
+            </div>
+            <h2 class="text-xl font-semibold text-neutral-900 group-hover:text-primary transition-colors">{product.title}</h2>
+            <p class="mt-2 text-neutral-600 text-sm leading-relaxed">{product.description}</p>
+            <span class="mt-4 inline-flex items-center text-sm font-medium text-primary group-hover:gap-2 gap-1 transition-all">
+              Learn more
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why choose us -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold text-neutral-900">
+          Solutions to your tank measurement needs
+        </h2>
+        <p class="mt-3 text-neutral-600">
+          Accurate, reliable and cost-effective wet stock management
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {solutions.map((solution) => (
+          <div class="p-6 rounded-lg border border-neutral-200 hover:border-primary/20 hover:shadow-md transition-all">
+            <h3 class="font-semibold text-neutral-900">{solution.title}</h3>
+            <p class="mt-2 text-sm text-neutral-600 leading-relaxed">{solution.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Trust section -->
+  <section class="py-16 lg:py-20">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-neutral-900">
+            Do you need to know the volume of liquid in your storage tank?
+          </h2>
+          <div class="mt-6 space-y-4 text-neutral-600 leading-relaxed">
+            <p>
+              With Dipsticks Engineering you get <strong>over 35 years of specialist experience</strong> in the calibration and manufacture of dipsticks and calibration charts for storage tanks. Whether you are a tank manufacturer, a garage forecourt supplier or rely on storage tanks for the running of your business or home, we can provide you with high precision volume measurement at low cost.
+            </p>
+            <p>
+              You may be conducting a large tank installation project or run a service station — either way, we can provide you with a dipstick for the largest underground industrial tank to a recycled oil drum and everything in between.
+            </p>
+            <p>
+              With such a long involvement in the industry we have built up a <strong>vast database of tanks</strong>. There's a good chance we already know your tank details, even if you don't!
+            </p>
+            <p>
+              Unlike other manufacturers, our volumetric calculations take into account <strong>real-world tank design and manufacture</strong> so you can be confident that whether your tank has dished ends, is on a tilt or is something more exotic, the volume measurements from our dipsticks will be highly accurate.
+            </p>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Tank types -->
+          <div class="bg-white rounded-xl border border-neutral-200 p-6">
+            <h3 class="font-semibold text-neutral-900 mb-4">Tank types we calibrate</h3>
+            <div class="space-y-3">
+              {tankTypes.map((tank) => (
+                <div class="flex items-center gap-3">
+                  <img src={tank.image} alt={tank.alt} class="w-12 h-12 rounded object-cover" width="48" height="48" loading="lazy" />
+                  <span class="text-sm text-neutral-700">{tank.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Liquids -->
+          <div class="bg-white rounded-xl border border-neutral-200 p-6">
+            <h3 class="font-semibold text-neutral-900 mb-4">Liquids we measure</h3>
+            <div class="flex flex-wrap gap-2">
+              {liquids.map((liquid) => (
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-secondary/30 text-primary font-medium">
+                  {liquid}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video section -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <h2 class="text-2xl sm:text-3xl font-bold text-neutral-900">
+          See how we make our dipsticks
+        </h2>
+        <p class="mt-3 text-neutral-600">
+          Watch a demonstration of our manufacturing process
+        </p>
+      </div>
+      <div class="max-w-3xl mx-auto">
+        <div class="relative rounded-xl overflow-hidden shadow-lg aspect-video bg-neutral-200">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/_fjZwlEt31E"
+            title="How Dipsticks Engineering manufactures dipsticks"
+            class="absolute inset-0 w-full h-full"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick links / resources -->
+  <section class="py-16 lg:py-20">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <a href="/downloads/DipsticksTankMeasurementsForm.pdf" target="_blank" class="group flex items-center gap-4 p-4 bg-white rounded-lg border border-neutral-200 hover:border-primary/20 hover:shadow-md transition-all">
+          <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
+          </div>
+          <div>
+            <span class="text-sm font-medium text-neutral-900 group-hover:text-primary transition-colors">Tank Measurement Guide</span>
+            <span class="block text-xs text-neutral-500">PDF Download</span>
+          </div>
+        </a>
+        <a href="/downloads/DipsticksRubbingGuide.pdf" target="_blank" class="group flex items-center gap-4 p-4 bg-white rounded-lg border border-neutral-200 hover:border-primary/20 hover:shadow-md transition-all">
+          <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+          </div>
+          <div>
+            <span class="text-sm font-medium text-neutral-900 group-hover:text-primary transition-colors">Dipstick Rubbing Guide</span>
+            <span class="block text-xs text-neutral-500">PDF Download</span>
+          </div>
+        </a>
+        <a href="/guides/how-to-use-a-dipstick/" class="group flex items-center gap-4 p-4 bg-white rounded-lg border border-neutral-200 hover:border-primary/20 hover:shadow-md transition-all">
+          <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+          </div>
+          <div>
+            <span class="text-sm font-medium text-neutral-900 group-hover:text-primary transition-colors">How to Use a Dipstick</span>
+            <span class="block text-xs text-neutral-500">Step-by-step guide</span>
+          </div>
+        </a>
+        <a href="/request-a-quote/" class="group flex items-center gap-4 p-4 bg-accent/10 rounded-lg border border-accent/20 hover:border-accent/40 hover:shadow-md transition-all">
+          <div class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" /></svg>
+          </div>
+          <div>
+            <span class="text-sm font-medium text-neutral-900 group-hover:text-accent-dark transition-colors">Request a Quote</span>
+            <span class="block text-xs text-neutral-500">Get a price for your tank</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="bg-primary">
+    <div class="mx-auto max-w-7xl px-4 py-12 lg:py-16 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white">
+        Need a dipstick or calibration chart?
+      </h2>
+      <p class="mt-3 text-secondary max-w-xl mx-auto">
+        Contact us with your tank details and we'll provide a quote. Custom manufactured to your exact specifications.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="/request-a-quote/" class="inline-flex items-center px-6 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded-lg transition-colors">
+          Get a Quote
+        </a>
+        <a href="tel:03335671654" class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg transition-colors border border-white/20">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
+          Call 0333 567 1654
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

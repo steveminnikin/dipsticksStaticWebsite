@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Use a Dipstick',
+  description: 'Step-by-step guide on how to correctly use a calibrated dipstick to measure the volume of liquid in a storage tank.',
+  step: [
+    {
+      '@type': 'HowToStep',
+      name: 'Before Use',
+      text: 'Check the dipstick is safe to handle. Wear gloves. Familiarise yourself with the volume units. Clean the dipstick with a lint-free cloth.',
+    },
+    {
+      '@type': 'HowToStep',
+      name: 'Using the Dipstick',
+      text: 'Lower the dipstick slowly into the dipping tube. Remove and note the reading at the wet/dry interface. Dry and take a second reading to verify.',
+    },
+    {
+      '@type': 'HowToStep',
+      name: 'After Use',
+      text: 'Either lower back into the tube and replace the cap, or wipe clean and store flat, supported along its length.',
+    },
+  ],
+};
+
+const steps = [
+  {
+    title: 'Before Use',
+    content: [
+      'Check that the dipstick is safe to handle — it has no sharp edges, fractures or splinters.',
+      'It is recommended that gloves are worn when handling the dipstick. These will prevent the smell of fuel on the hands and negate any allergic reaction your skin may have to the fuel.',
+      'Familiarise yourself with the volume units that the dipstick is marked in (litres, gallons, etc.) and with the number of volume units that the gap between the marked lines represents. Above the last (highest) engraved line is a figure indicating the full capacity of the tank. Just above that will be an indication of the units being used, usually litres. Above that is our reference number and above that again is a marking of the tank\'s Safe Working Capacity (SWC) which is 97% of the full capacity.',
+      'The tank you are dipping should bear a plate or engraving that corresponds to the dipstick. If you are in any doubt as to whether you are using the correct dipstick for the tank, contact us quoting the reference number.',
+      'Finally, clean the dipstick with a lint-free cloth. Use this cloth also to dry the dipstick if it has become wet due to rain.',
+    ],
+  },
+  {
+    title: 'Using the Dipstick',
+    content: [
+      'Present the dipstick into the dipping tube. Do not drop the dipstick — lower it slowly. Dropping the dipstick into the tank will damage the tank and the dipstick.',
+      'Remove the dipstick until the interface between wet and dry areas is apparent. Note the reading, estimating the distance from the last wet engraved line to the one above it. For example, if the wet line is 800 litres, the dry line is 1,000 litres and you estimate the liquid level to be 3/4 of the way between them, then the reading is 800 + 3/4 of 200 = 950.',
+      'Dry the dipstick in that area and check the accuracy of the reading by taking a second one.',
+      'If you are taking a reading after a delivery has been received, allow 15 minutes after the delivery is completed before taking a reading to let the fuel level settle.',
+    ],
+  },
+  {
+    title: 'After Use',
+    content: [
+      'If you intend to keep the dipstick in the tank, lower it back into the tube and replace the cap.',
+      'If it is to be kept separately, remove it, wiping with the cloth as you go, and store it in a place that will protect it from damage — ideally lying flat and supported along its length.',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="How to Use a Dipstick"
+  description="Step-by-step guide on correctly using a calibrated dipstick to measure liquid volume in a storage tank. Includes safety tips and reading instructions."
+  jsonLd={howToSchema}
+>
+  <PageHeader
+    title="How to Use a Dipstick"
+    subtitle="A step-by-step guide to accurate tank measurements"
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Guides', href: '/' },
+      { label: 'How to Use a Dipstick' },
+    ]}
+  />
+
+  <section class="py-12 lg:py-16">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        <!-- Steps -->
+        <div class="lg:col-span-2">
+          <div class="space-y-8">
+            {steps.map((step, i) => (
+              <div class="relative pl-10">
+                <div class="absolute left-0 top-0 w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">
+                  {i + 1}
+                </div>
+                {i < steps.length - 1 && (
+                  <div class="absolute left-3.5 top-7 bottom-0 w-px bg-neutral-200"></div>
+                )}
+                <h2 class="text-lg font-semibold text-neutral-900">{step.title}</h2>
+                <div class="mt-3 space-y-3">
+                  {step.content.map((para) => (
+                    <p class="text-neutral-600 leading-relaxed">{para}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-1 space-y-6">
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <svg class="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>
+              <h3 class="font-semibold text-amber-800">Don't Drop the Dipstick!</h3>
+            </div>
+            <p class="text-sm text-amber-700">Lower it slowly into the tank to prevent damage to the base of the tank.</p>
+          </div>
+
+          <div class="bg-white rounded-xl border border-neutral-200 p-5">
+            <h3 class="font-semibold text-neutral-900 mb-3">Download Guide</h3>
+            <p class="text-sm text-neutral-600 mb-3">Get a printable version of this guide.</p>
+            <a href="/downloads/DipsticksUsageGuide.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-success hover:bg-success/90 text-white text-sm font-medium rounded-lg transition-colors">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+              Download PDF
+            </a>
+          </div>
+
+          <div class="bg-white rounded-xl border border-neutral-200 p-5">
+            <h3 class="font-semibold text-neutral-900 mb-3">Need Help?</h3>
+            <p class="text-sm text-neutral-600 mb-3">If you're unsure about using your dipstick, contact us with the reference number.</p>
+            <a href="/contact/" class="text-sm font-medium text-primary hover:underline">Contact us &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

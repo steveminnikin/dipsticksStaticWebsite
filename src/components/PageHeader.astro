@@ -1,0 +1,50 @@
+---
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  breadcrumbs: BreadcrumbItem[];
+}
+
+const { title, subtitle, breadcrumbs } = Astro.props;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbs.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.label,
+    ...(item.href ? { item: new URL(item.href, Astro.site).href } : {}),
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+<section class="bg-primary">
+  <div class="mx-auto max-w-7xl px-4 py-10 lg:py-14">
+    <nav aria-label="Breadcrumb" class="mb-3">
+      <ol class="flex flex-wrap items-center gap-1 text-sm text-secondary/70">
+        {breadcrumbs.map((crumb, i) => (
+          <li class="flex items-center gap-1">
+            {i > 0 && (
+              <svg class="w-4 h-4 text-secondary/40" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+            )}
+            {crumb.href ? (
+              <a href={crumb.href} class="hover:text-white transition-colors">{crumb.label}</a>
+            ) : (
+              <span class="text-secondary">{crumb.label}</span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">{title}</h1>
+    {subtitle && <p class="mt-2 text-lg text-secondary/80 max-w-2xl">{subtitle}</p>}
+  </div>
+</section>

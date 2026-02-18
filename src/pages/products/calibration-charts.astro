@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Strapping Tables / Calibration Charts',
+  description: 'Calibration charts that convert liquid depth measurements into accurate volume readings for storage tanks.',
+  brand: { '@type': 'Brand', name: 'Dipsticks Engineering' },
+};
+
+const specs = [
+  { label: 'Increments', value: 'As per user requirements — such as 10mm or 1 inch intervals.' },
+  { label: 'Units', value: 'Can be calibrated in litres, gallons, US gallons and cubic metres.' },
+  { label: 'Format', value: 'Durable paper copy and digital version.' },
+  { label: 'Suitable for', value: 'Use with a dip tape to convert height readings into a volume and to calibrate a tank gauge.' },
+  { label: 'Customisable', value: 'We can add any details you require: tank reference, telephone number, etc.' },
+];
+
+const useCases = [
+  'Use with a dip tape or uncalibrated dipstick to give volume readings',
+  'Calibration of other tank gauging systems such as gauges',
+];
+---
+
+<BaseLayout
+  title="Strapping Tables & Calibration Charts"
+  description="Calibration charts and strapping tables for storage tanks. Quick conversion of liquid depth into volume. Available in metric and imperial units."
+  jsonLd={productSchema}
+>
+  <PageHeader
+    title="Strapping Tables / Calibration Charts"
+    subtitle="Quick conversion of liquid depth into volume for any storage tank"
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Products', href: '/' },
+      { label: 'Calibration Charts' },
+    ]}
+  />
+
+  <section class="py-12 lg:py-16">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        <!-- Image -->
+        <div class="lg:col-span-1">
+          <div class="rounded-xl overflow-hidden border border-neutral-200 bg-white p-4">
+            <img
+              src="/images/DipsticksSampleStrappingTable.png"
+              alt="Sample strapping table showing volume calculations for tank gauging"
+              class="w-full"
+              width="400"
+              height="500"
+            />
+          </div>
+          <p class="mt-2 text-xs text-neutral-500 text-center">Example strapping table output</p>
+        </div>
+
+        <!-- Description -->
+        <div class="lg:col-span-1">
+          <h2 class="text-xl font-semibold text-neutral-900">Description</h2>
+          <div class="mt-4 space-y-3 text-neutral-600 leading-relaxed">
+            <p>Our strapping tables are constructed using the exact same calculations as our <a href="/products/dipsticks/" class="text-primary font-medium hover:underline">dipsticks</a>, but the computed volumes at various heights are displayed in a table for quick reference.</p>
+            <p>As with the dipsticks, the table can be presented in metric or imperial units, using customer-specified intervals.</p>
+            <p>Tables are offered in both a tough and durable hard copy version and a digital version which can be uploaded to multiple devices and accessed from a mobile device at the tank location.</p>
+          </div>
+
+          <h3 class="mt-8 text-lg font-semibold text-neutral-900">Specifications</h3>
+          <dl class="mt-4 space-y-4">
+            {specs.map((spec) => (
+              <div>
+                <dt class="text-sm font-semibold text-neutral-900">{spec.label}</dt>
+                <dd class="mt-1 text-sm text-neutral-600">{spec.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-1 space-y-6">
+          <!-- Use cases -->
+          <div class="bg-white rounded-xl border border-neutral-200 p-5">
+            <h3 class="font-semibold text-neutral-900 mb-3">Uses</h3>
+            <ul class="space-y-3">
+              {useCases.map((use) => (
+                <li class="flex items-start gap-2 text-sm text-neutral-700">
+                  <svg class="w-4 h-4 text-success mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                  {use}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- CTA -->
+          <a href="/request-a-quote/" class="block w-full py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded-lg transition-colors text-center">
+            Get a Quote
+          </a>
+
+          <!-- Related -->
+          <div class="bg-white rounded-xl border border-neutral-200 p-5">
+            <h3 class="font-semibold text-neutral-900 mb-3">Related Items</h3>
+            <div class="space-y-3">
+              <a href="/downloads/DipsticksTankMeasurementsForm.pdf" target="_blank" class="flex items-center justify-between p-3 rounded-lg bg-neutral-50 hover:bg-neutral-100 transition-colors group">
+                <span class="text-sm font-medium text-neutral-700 group-hover:text-primary">Tank Measurement Guide</span>
+                <svg class="w-4 h-4 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+              </a>
+              <a href="/products/dip-tapes/" class="flex items-center justify-between p-3 rounded-lg bg-neutral-50 hover:bg-neutral-100 transition-colors group">
+                <span class="text-sm font-medium text-neutral-700 group-hover:text-primary">Dip Tapes</span>
+                <svg class="w-4 h-4 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="How Dipsticks Engineering Services Ltd collects, uses and protects your personal data. Our privacy and cookie policy."
+  noindex={true}
+>
+  <PageHeader
+    title="Privacy Policy"
+    subtitle="How we collect, use and protect your personal data"
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Privacy Policy' },
+    ]}
+  />
+
+  <section class="py-12 lg:py-16">
+    <div class="mx-auto max-w-3xl px-4 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-neutral-900 [&_h2]:mt-8 [&_h2]:mb-3 [&_h3]:text-base [&_h3]:font-semibold [&_h3]:text-neutral-900 [&_h3]:mt-6 [&_h3]:mb-2 [&_p]:text-neutral-600 [&_p]:leading-relaxed [&_p]:mb-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-1 [&_ul]:mb-4 [&_ul]:text-neutral-600 [&_a]:text-primary hover:[&_a]:underline">
+      <p class="text-sm text-neutral-500">Last updated: 18 February 2025</p>
+
+      <h2>Who we are</h2>
+      <p>
+        Dipsticks Engineering Services Ltd (Companies House No. 10632644), registered at The Lodge, Wood Lane, Hinstock, Shropshire TF9 2TA.
+        For data protection queries, contact us at <a href="mailto:enquiries@dipsticksengineering.co.uk">enquiries@dipsticksengineering.co.uk</a> or call <a href="tel:03335671654">0333 567 1654</a>.
+      </p>
+
+      <h2>What data we collect</h2>
+      <p>We collect personal data that you provide directly through our website forms:</p>
+      <ul>
+        <li><strong>Contact form:</strong> name, company, email address, phone number, enquiry type and message.</li>
+        <li><strong>Quote request form:</strong> name, company, email address, phone number, tank specifications and any additional notes.</li>
+      </ul>
+      <p>If you consent to analytics cookies, we also collect anonymised usage data through Google Tag Manager and Google Analytics, including pages visited, time on site and referring website.</p>
+
+      <h2>How we use your data</h2>
+      <p>We use personal data submitted through our forms solely to:</p>
+      <ul>
+        <li>Respond to your enquiry or provide a quote.</li>
+        <li>Manufacture and deliver products you have ordered.</li>
+        <li>Contact you with follow-up information related to your enquiry.</li>
+      </ul>
+      <p>We will not use your data for marketing purposes unless you have explicitly opted in. We do not sell, rent or share your personal data with third parties, except where necessary to fulfil your order (e.g. delivery services).</p>
+
+      <h2>Lawful basis for processing</h2>
+      <p>We process your data under the following lawful bases (UK GDPR Article 6):</p>
+      <ul>
+        <li><strong>Consent:</strong> analytics cookies are only set if you accept cookies via our consent banner.</li>
+        <li><strong>Legitimate interest:</strong> responding to your enquiries and providing quotes.</li>
+        <li><strong>Contract:</strong> processing orders and delivering products you have purchased.</li>
+      </ul>
+
+      <h2>Cookies</h2>
+      <p>Our website uses a cookie consent banner. You can choose to accept or decline cookies when you first visit the site.</p>
+      <h3>Essential cookies</h3>
+      <p>We store your cookie consent preference in your browser's local storage. This is necessary for the site to remember your choice and is not a tracking cookie.</p>
+      <h3>Analytics cookies</h3>
+      <p>If you accept cookies, we load Google Tag Manager (GTM-WVD37F) which may set cookies from Google Analytics. These cookies help us understand how visitors use our site so we can improve it. If you decline cookies, Google Tag Manager is not loaded and no analytics cookies are set.</p>
+      <p>You can change your cookie preferences at any time by clearing your browser's local storage for this site, which will cause the consent banner to reappear on your next visit.</p>
+
+      <h2>Data retention</h2>
+      <p>Form submissions are stored by Netlify (our hosting provider) and retained for as long as necessary to fulfil your enquiry or order. We periodically review and delete submissions that are no longer needed. Analytics data collected by Google is subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's privacy policy</a>.</p>
+
+      <h2>Data security</h2>
+      <p>Our website is served over HTTPS, and form submissions are transmitted securely. We use Netlify's infrastructure for hosting, which maintains appropriate technical and organisational security measures.</p>
+
+      <h2>Your rights</h2>
+      <p>Under UK GDPR, you have the right to:</p>
+      <ul>
+        <li>Request access to the personal data we hold about you.</li>
+        <li>Request correction of inaccurate data.</li>
+        <li>Request deletion of your data.</li>
+        <li>Object to or restrict processing of your data.</li>
+        <li>Withdraw consent at any time (for analytics cookies, by declining or clearing your consent preference).</li>
+      </ul>
+      <p>To exercise any of these rights, contact us at <a href="mailto:enquiries@dipsticksengineering.co.uk">enquiries@dipsticksengineering.co.uk</a>.</p>
+      <p>You also have the right to lodge a complaint with the <a href="https://ico.org.uk/" target="_blank" rel="noopener noreferrer">Information Commissioner's Office (ICO)</a> if you believe your data has been handled improperly.</p>
+
+      <h2>Third-party services</h2>
+      <ul>
+        <li><strong>Netlify:</strong> website hosting and form submission processing. <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify privacy policy</a>.</li>
+        <li><strong>Google Tag Manager / Google Analytics:</strong> website analytics (only if you consent to cookies). <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google privacy policy</a>.</li>
+        <li><strong>Google Fonts:</strong> web fonts served from Google's CDN. <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener noreferrer">Google Fonts privacy FAQ</a>.</li>
+      </ul>
+
+      <h2>Changes to this policy</h2>
+      <p>We may update this privacy policy from time to time. Any changes will be reflected on this page with an updated date.</p>
+    </div>
+  </section>
+</BaseLayout>

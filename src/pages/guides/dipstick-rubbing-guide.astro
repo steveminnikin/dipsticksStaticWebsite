@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+
+const howToSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to Take a Rubbing of an Existing Dipstick',
+  description: 'Guide on taking a rubbing of an existing dipstick so we can manufacture an accurate replacement.',
+  supply: [
+    { '@type': 'HowToSupply', name: 'Lint-free cloth' },
+    { '@type': 'HowToSupply', name: 'Gloves' },
+    { '@type': 'HowToSupply', name: 'Strip of paper (till roll is ideal)' },
+    { '@type': 'HowToSupply', name: 'Tape' },
+    { '@type': 'HowToSupply', name: 'Pencil' },
+  ],
+  step: [
+    { '@type': 'HowToStep', name: 'Preparation', text: 'Wearing gloves, assemble dipsticks in a safe area. Examine for damage. Dry and lay side by side.' },
+    { '@type': 'HowToStep', name: 'Method', text: 'Tape paper at base of dipstick, stretch along length, and rub over lines and numbers with pencil.' },
+    { '@type': 'HowToStep', name: 'Additional Info', text: 'Write the overall length and any tank references on the upper blank part of the rubbing.' },
+    { '@type': 'HowToStep', name: 'Send It', text: 'Fold rubbing into a standard envelope and post to our workshop with your contact details.' },
+  ],
+};
+
+const steps = [
+  {
+    title: 'Preparation',
+    content: 'Wearing gloves, assemble the dipsticks you want rubbings of in a safe area and examine them for damage. If damage is evident, take care when handling. Dry the dipsticks with the cloth and lay them side by side so they can be examined to see if any are identical (all lines need to line up, not just equal volumes). If there are identical dipsticks, only one rubbing need be taken with a note saying you require multiple dipsticks from this one rubbing.',
+  },
+  {
+    title: 'Method',
+    content: 'The rubbing is done in the manner of taking a brass rubbing of a coin or plaque. Tape the paper strip at the base of the dipstick, pull the strip along the length of the dipstick and with a light pull, stretch the paper and tape it to the top of the dipstick. Using the pencil, rub over the paper where the lines and numbers are.',
+  },
+  {
+    title: 'Important Note',
+    content: 'If you can\'t make out the details then we won\'t be able to! If the details that we require are not clearly visible on the rubbing, use the pencil to mark the line or write out the number on the paper.',
+    isWarning: true,
+  },
+  {
+    title: 'Additional Information',
+    content: 'On the upper, blank part of the rubbing write down the overall length of the dipstick you require and, if you want it shown on the dipstick, the tank reference and type of fuel it contains.',
+  },
+  {
+    title: 'Send It to Us',
+    content: 'Once you\'ve taken the rubbing, fold it up so that it fits in a standard envelope and post it, together with your name and contact details, to our workshop. The address can be found on the contact page.',
+  },
+];
+
+const youWillNeed = ['Lint-free cloth', 'Gloves', 'Strip of paper the length of the dipstick (till roll is ideal)', 'Tape', 'Pencil'];
+const mustBeVisible = ['The base of the dipstick', 'All the lines', 'The first and last few sets of numbers', 'The full volume number'];
+---
+
+<BaseLayout
+  title="Dipstick Rubbing Guide"
+  description="How to take a rubbing of an existing dipstick so we can manufacture an accurate replacement. We can convert gallons to litres or correct inaccurate dipsticks."
+  jsonLd={howToSchema}
+>
+  <PageHeader
+    title="Dipstick Rubbing Guide"
+    subtitle="How to take a rubbing of an existing dipstick for replacement"
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Guides', href: '/' },
+      { label: 'Rubbing Guide' },
+    ]}
+  />
+
+  <section class="py-12 lg:py-16">
+    <div class="mx-auto max-w-7xl px-4">
+      <!-- Intro -->
+      <div class="max-w-3xl mb-10">
+        <p class="text-lg text-neutral-700 leading-relaxed">
+          If you don't know the dimensions of your tank but have an old — even broken — dipstick, we can use a rubbing of that to manufacture a replacement. We can even convert a gallons dipstick into litres or correct a dipstick that is giving false measurements.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+        <!-- Steps -->
+        <div class="lg:col-span-2">
+          <div class="space-y-8">
+            {steps.map((step, i) => (
+              <div class={`relative pl-10 ${step.isWarning ? '' : ''}`}>
+                <div class={`absolute left-0 top-0 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold ${step.isWarning ? 'bg-amber-500 text-white' : 'bg-primary text-white'}`}>
+                  {step.isWarning ? '!' : i + 1}
+                </div>
+                {i < steps.length - 1 && (
+                  <div class="absolute left-3.5 top-7 bottom-0 w-px bg-neutral-200"></div>
+                )}
+                <h2 class="text-lg font-semibold text-neutral-900">{step.title}</h2>
+                <div class={`mt-3 leading-relaxed ${step.isWarning ? 'p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800' : 'text-neutral-600'}`}>
+                  <p>{step.content}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-10 text-center">
+            <a href="/downloads/DipsticksRubbingGuide.pdf" target="_blank" class="inline-flex items-center gap-2 px-5 py-3 bg-success hover:bg-success/90 text-white font-medium rounded-lg transition-colors">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+              Download Printable Guide (PDF)
+            </a>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-1 space-y-6">
+          <div class="bg-primary/5 border border-primary/20 rounded-xl p-5">
+            <h3 class="font-semibold text-neutral-900 mb-3">What You Will Need</h3>
+            <ul class="space-y-2">
+              {youWillNeed.map((item) => (
+                <li class="flex items-start gap-2 text-sm text-neutral-700">
+                  <svg class="w-4 h-4 text-primary mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="bg-red-50 border border-red-200 rounded-xl p-5">
+            <h3 class="font-semibold text-red-800 mb-3">What Must Be Visible</h3>
+            <ul class="space-y-2">
+              {mustBeVisible.map((item) => (
+                <li class="flex items-start gap-2 text-sm text-red-700">
+                  <svg class="w-4 h-4 text-red-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-xl border border-neutral-200 p-5">
+            <h3 class="font-semibold text-neutral-900 mb-2">Send Your Rubbing To</h3>
+            <address class="not-italic text-sm text-neutral-600 leading-relaxed">
+              Dipsticks Engineering<br />
+              The Lodge, Wood Lane<br />
+              Hinstock, Shropshire<br />
+              TF9 2TA
+            </address>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
