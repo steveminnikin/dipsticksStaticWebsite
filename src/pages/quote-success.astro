@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<BaseLayout
+  title="Quote Request Received"
+  description="Thank you — we've received your quote request and will be in touch shortly."
+>
+  <PageHeader
+    title="Quote Request Received"
+    subtitle="Thank you for your enquiry"
+    breadcrumbs={[
+      { label: 'Home', href: '/' },
+      { label: 'Request a Quote', href: '/request-a-quote/' },
+      { label: 'Success' },
+    ]}
+  />
+
+  <section class="py-16 lg:py-24">
+    <div class="mx-auto max-w-2xl px-4 text-center">
+      <div class="bg-white rounded-xl border border-neutral-200 p-8 lg:p-12">
+        <div class="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+          <svg class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+          </svg>
+        </div>
+
+        <h2 class="text-2xl font-bold text-neutral-900 mb-3">We've received your request</h2>
+        <p class="text-neutral-600 mb-6">
+          Thank you for getting in touch. We'll review your tank details and send you an accurate quote by email, usually within one working day.
+        </p>
+
+        <div class="bg-primary/5 rounded-lg border border-primary/20 p-5 mb-8 text-left">
+          <h3 class="text-sm font-semibold text-neutral-900 mb-2">What happens next?</h3>
+          <ol class="space-y-2">
+            <li class="flex gap-2 text-sm text-neutral-600">
+              <span class="flex-shrink-0 w-5 h-5 bg-primary text-white text-xs font-bold rounded-full flex items-center justify-center">1</span>
+              We'll check your measurements and confirm any details if needed.
+            </li>
+            <li class="flex gap-2 text-sm text-neutral-600">
+              <span class="flex-shrink-0 w-5 h-5 bg-primary text-white text-xs font-bold rounded-full flex items-center justify-center">2</span>
+              You'll receive a quote by email with pricing and lead time.
+            </li>
+            <li class="flex gap-2 text-sm text-neutral-600">
+              <span class="flex-shrink-0 w-5 h-5 bg-primary text-white text-xs font-bold rounded-full flex items-center justify-center">3</span>
+              Once confirmed, we'll manufacture your product to your exact specifications.
+            </li>
+          </ol>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="/" class="px-6 py-2.5 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg transition-colors">
+            Back to Home
+          </a>
+          <a href="/request-a-quote/" class="px-6 py-2.5 border border-neutral-300 hover:border-primary text-neutral-700 hover:text-primary font-medium rounded-lg transition-colors">
+            Submit Another Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
